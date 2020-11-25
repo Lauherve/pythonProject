@@ -1,9 +1,8 @@
-
 import pandas as pd
 import sqlalchemy
 
 def lireConstraintes():
-    engine = sqlalchemy.create_engine("oracle+cx_oracle://stag09:Phoenix#Icar67@51.91.76.248:15440/coursdb")
+    engine = sqlalchemy.create_engine("oracle+cx_oracle://stag08:Phoenix#Icar67@51.91.76.248:15440/coursdb")
     print("connecting with engine " + str(engine))
     connection = engine.connect()
     query = """
@@ -16,7 +15,7 @@ def lireConstraintes():
     """
     return pd.read_sql_query(query, connection)
 
-df_test = lireConstraintes()
-df =df_test
+df = lireConstraintes()
+
 #df = df_test.astype('object')
 df.columns = ['nodeA','nodeB','conn_nodeA','conn_nodeB']
